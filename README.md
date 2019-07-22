@@ -36,7 +36,14 @@ JSX -> JS 对象 -> 真实的DOM
 - Diff算法，用于以上第7步  key值主要用于diff算法。某一节点出现不一致，该节点往后全部不进行比对，直接替换新DOM
 - React中ref的使用，获取元素对应的DOM，e.target是一种，另一种为ref。ref表示直接操作DOM，尽量操作数据触发改变。
 
-
+### react生命周期函数
+- 指在某一个时刻组件会自动执行的函数
+1. 初始化过程 setup props and state
+2. 挂载过程  componentWillMount -> render -> componentDidMount
+3. 组件更新流程
+1).props componentWillReceiveProps -> shouldComponentUpdate -> componentWillUpdate -> render -> componentDidUpdate
+2).states shouldComponentUpdate -> componentWillUpdate -> render -> componentDidUpdate
+4. 取消挂载过程  componentWillUnmount
 
 
 

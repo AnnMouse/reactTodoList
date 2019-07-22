@@ -8,6 +8,19 @@ class TodoItem extends Component {
 		this.handleClick = this.handleClick.bind(this);
 	}
 
+	// 当组件从父组件接收参数
+	// 如果此组件第一次存在与父组件中，不会被执行
+	// 如果此组件之前已经存在与父组件中，才会被执行
+	componentWillReceiveProps() {
+		console.log('child componentWillReceiveProps');
+	}
+
+	// 当此组件即将被从页面剔除的时候执行
+	componentWillUnmount() {
+		console.log('componentWillUnmount');
+	}
+
+
 	handleClick() {
 		const { deleteItem, index } = this.props;
 		deleteItem(index);

@@ -66,7 +66,49 @@ class TodoList extends Component {
 		})
 	}
 
+	// 在组件即将被挂载到页面的时刻自动执行
+	componentWillMount() {
+		console.log('componentWillMount');
+	}
+
+	// 在组件被挂载到页面后自动执行
+	componentDidMount() {
+		console.log('componentDidMount');
+	}
+
+	// 组件被更新之前自动执行
+	shouldComponentUpdate() {
+		console.log('shouldComponentUpdate');
+		// 返回false,表示组件不需要更新，因此要返回true
+		return true;
+	}
+
+	// 组件被更新之前，会自动执行。
+	// 但在shouldComponentUpdate之后，若shouldComponentUpdate返回false，则该方法不执行。
+	// 若返回true时，该方法会被自动执行。
+	componentWillUpdate() {
+		console.log('componentWillUpdate');
+	}
+
+	// 组件更新完成之后，会被执行
+	componentDidUpdate() {
+		console.log('componentDidUpdate');
+	}
+
+	// 当组件从父组件接收参数
+	// 如果此组件第一次存在与父组件中，不会被执行
+	// 如果此组件之前已经存在与父组件中，才会被执行
+	componentWillReceiveProps() {
+		console.log('child componentWillReceiveProps');
+	}
+
+	// 当此组件即将被从页面剔除的时候执行
+	componentWillUnmount() {
+		console.log('componentWillUnmount');
+	}
+
 	render() {
+		console.log('render');
 		return (
 			<Fragment>
 				<div>
