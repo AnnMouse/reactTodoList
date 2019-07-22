@@ -19,6 +19,34 @@
 ### react高级内容
 - 使用propTypes对接收的属性做强校验
 - 使用defaultProps在没有传值的情况下，可以使用默认值。默认值的类型必须与propTypes的类型一致
+- 当数据state或者props发生变化时，render函数会被出发一次。当父组件的render函数被运行时，它的子组件的render都将被重新运行。
+- 虚拟dom，减少操作真实DOM的性能损耗
+1. 获取state数据
+2. 获取jsx模板
+4. 生成虚拟DOM（虚拟DOM就是一个JS对象，用来描述真实的DOM）
+如：['div',{'id':'abc'},['span',{},'helloWorld']]
+3. 用虚拟DOM的结构，生成真实DOM显示
+5. state发生变化
+6. 生成新的虚拟DOM（提高性能）
+7. 比较原始虚拟DOM和新的虚拟DOM的区别，找到区别中内容（提高性能）
+8. 直接操作DOM，修改span中的内容
+- 深入了解虚拟DOM
+JSX -> JS 对象 -> 真实的DOM
+优点：性能提升，使得跨度安应用得以实现
+- Diff算法，用于以上第7步  key值主要用于diff算法。某一节点出现不一致，该节点往后全部不进行比对，直接替换新DOM
+- React中ref的使用，获取元素对应的DOM，e.target是一种，另一种为ref。ref表示直接操作DOM，尽量操作数据触发改变。
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 # 以上内容来自：www.dell-lee.com

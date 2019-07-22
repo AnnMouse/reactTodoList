@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import TodoItem from './TodoItem';
+import Test from './Test';
 
 class TodoList extends Component {
 
@@ -19,7 +20,9 @@ class TodoList extends Component {
 		// this.setState({
 		// 	inputValue: e.target.value
 		// })
-		const value = e.target.value;
+		// const value = e.target.value;
+		// 通过真实的DOM获取元素
+		const value = this.input.value;
 		this.setState(() => ({
 				inputValue:value
 			})		
@@ -30,7 +33,11 @@ class TodoList extends Component {
 		this.setState((preState) => ({
 			list: [...preState.list, preState.inputValue],
 			inputValue:''
-		}))
+		}),()=>{
+			console.log(this.ul.querySelectorAll('div').length);
+		})
+		// 因setState为异步函数，因此操作dom查到的都是改变之前的div长度
+		// console.log(this.ul.querySelectorAll('div').length);
 	}
 
 	handleLiClick (index) {
@@ -67,16 +74,18 @@ class TodoList extends Component {
 					<input
 					  id="insertArea" 
 					  value = { this.state.inputValue }
-						onChange = { this.handleInputChange }
+					  onChange = { this.handleInputChange }
+					  ref = {(input) => {this.input = input}}
 					/>
 					<button 
 						onClick = {this.handleBtnClick }>提交</button>
 				</div>
-				<ul>
+				<ul ref={(ul) => this.ul = ul}>
 					{
 						this.getTodoItem()
 					}
 				</ul>
+				<div><Test content = { this.state.inputValue }/></div>
 			</Fragment>
 		)
 	}
