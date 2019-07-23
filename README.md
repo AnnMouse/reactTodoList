@@ -49,6 +49,17 @@ JSX -> JS 对象 -> 真实的DOM
 2.setState,异步函数，内置提升性能。将多次数据改变合并为一次，降低虚拟DOM的比对频率
 3.虚拟DOM同层比对的概念，利用key值提升比对速率，提升性能。
 4.shouldComponentUpdate 将改变之前的props和改变后的props做对比，判断是否需要更新，提高性能。
+- 使用CSS的渐变效果
+```
+.hide {
+    opacity: 0;
+    transition: all 1s ease-in;
+}
+```
+- css动画效果，使用@keyframes定义css动画
+@keyframes 样式名称 定义动画效果，使用animation响应动画效果。最后添加forwards，保留最后一帧动画效果。
+- react-transition-group(Css transition使用方法)
+
 
 
 
