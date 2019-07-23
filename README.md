@@ -44,6 +44,11 @@ JSX -> JS 对象 -> 真实的DOM
 1).props componentWillReceiveProps -> shouldComponentUpdate -> componentWillUpdate -> render -> componentDidUpdate
 2).states shouldComponentUpdate -> componentWillUpdate -> render -> componentDidUpdate
 4. 取消挂载过程  componentWillUnmount
+- 性能优化有以下几个方面
+1.this.xx=this.xx.bind(this)将作用域的修改放到constructor，保证作用域的改变只执行一次，避免子组件无用的渲染
+2.setState,异步函数，内置提升性能。将多次数据改变合并为一次，降低虚拟DOM的比对频率
+3.虚拟DOM同层比对的概念，利用key值提升比对速率，提升性能。
+4.shouldComponentUpdate 将改变之前的props和改变后的props做对比，判断是否需要更新，提高性能。
 
 
 

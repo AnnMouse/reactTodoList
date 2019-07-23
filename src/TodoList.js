@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import axios from 'axios';
 import TodoItem from './TodoItem';
 import Test from './Test';
 
@@ -20,9 +21,9 @@ class TodoList extends Component {
 		// this.setState({
 		// 	inputValue: e.target.value
 		// })
-		// const value = e.target.value;
+		const value = e.target.value;
 		// 通过真实的DOM获取元素
-		const value = this.input.value;
+		// const value = this.input.value;
 		this.setState(() => ({
 				inputValue:value
 			})		
@@ -33,9 +34,7 @@ class TodoList extends Component {
 		this.setState((preState) => ({
 			list: [...preState.list, preState.inputValue],
 			inputValue:''
-		}),()=>{
-			console.log(this.ul.querySelectorAll('div').length);
-		})
+		}))
 		// 因setState为异步函数，因此操作dom查到的都是改变之前的div长度
 		// console.log(this.ul.querySelectorAll('div').length);
 	}
@@ -66,46 +65,51 @@ class TodoList extends Component {
 		})
 	}
 
-	// 在组件即将被挂载到页面的时刻自动执行
-	componentWillMount() {
-		console.log('componentWillMount');
-	}
+	// // 在组件即将被挂载到页面的时刻自动执行
+	// componentWillMount() {
+	// 	console.log('componentWillMount');
+	// }
 
 	// 在组件被挂载到页面后自动执行
 	componentDidMount() {
 		console.log('componentDidMount');
+		axios.get('/api/todolist').then((res) => {
+			console.log('successful');
+		}).catch(()=>{
+			console.log('error');
+		})
 	}
 
-	// 组件被更新之前自动执行
-	shouldComponentUpdate() {
-		console.log('shouldComponentUpdate');
-		// 返回false,表示组件不需要更新，因此要返回true
-		return true;
-	}
+	// // 组件被更新之前自动执行
+	// shouldComponentUpdate() {
+	// 	console.log('shouldComponentUpdate');
+	// 	// 返回false,表示组件不需要更新，因此要返回true
+	// 	return true;
+	// }
 
-	// 组件被更新之前，会自动执行。
-	// 但在shouldComponentUpdate之后，若shouldComponentUpdate返回false，则该方法不执行。
-	// 若返回true时，该方法会被自动执行。
-	componentWillUpdate() {
-		console.log('componentWillUpdate');
-	}
+	// // 组件被更新之前，会自动执行。
+	// // 但在shouldComponentUpdate之后，若shouldComponentUpdate返回false，则该方法不执行。
+	// // 若返回true时，该方法会被自动执行。
+	// componentWillUpdate() {
+	// 	console.log('componentWillUpdate');
+	// }
 
-	// 组件更新完成之后，会被执行
-	componentDidUpdate() {
-		console.log('componentDidUpdate');
-	}
+	// // 组件更新完成之后，会被执行
+	// componentDidUpdate() {
+	// 	console.log('componentDidUpdate');
+	// }
 
-	// 当组件从父组件接收参数
-	// 如果此组件第一次存在与父组件中，不会被执行
-	// 如果此组件之前已经存在与父组件中，才会被执行
-	componentWillReceiveProps() {
-		console.log('child componentWillReceiveProps');
-	}
+	// // 当组件从父组件接收参数
+	// // 如果此组件第一次存在与父组件中，不会被执行
+	// // 如果此组件之前已经存在与父组件中，才会被执行
+	// componentWillReceiveProps() {
+	// 	console.log('child componentWillReceiveProps');
+	// }
 
-	// 当此组件即将被从页面剔除的时候执行
-	componentWillUnmount() {
-		console.log('componentWillUnmount');
-	}
+	// // 当此组件即将被从页面剔除的时候执行
+	// componentWillUnmount() {
+	// 	console.log('componentWillUnmount');
+	// }
 
 	render() {
 		console.log('render');
@@ -117,12 +121,11 @@ class TodoList extends Component {
 					  id="insertArea" 
 					  value = { this.state.inputValue }
 					  onChange = { this.handleInputChange }
-					  ref = {(input) => {this.input = input}}
 					/>
 					<button 
 						onClick = {this.handleBtnClick }>提交</button>
 				</div>
-				<ul ref={(ul) => this.ul = ul}>
+				<ul>
 					{
 						this.getTodoItem()
 					}
