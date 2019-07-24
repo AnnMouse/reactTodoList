@@ -4,9 +4,11 @@ import store from './store';
 import { 
 	getInputChangeAction,
 	getAddItemAction,
-	getDeleteTodoItemAction 
+	getDeleteTodoItemAction,
+	initListAction
 } from './store/actionCreators';
 import TodoListUI from './TodoListUI';
+import axios from 'axios';
 
 // 容器组件
 class TodoList extends Component {
@@ -20,6 +22,14 @@ class TodoList extends Component {
 		this.handleBtnClick = this.handleBtnClick.bind(this);
 		this.handleItemDelete = this.handleItemDelete.bind(this);
 		store.subscribe(this.handleStoreChange);
+	}
+
+	componentDidMount() {
+		axios.get('/list.json').then((res)=>{
+			const data = res.data;
+			const action = initListAction(data);
+			store.dispatch(action);
+		})
 	}
 
 	handleInputChange(e) {

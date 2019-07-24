@@ -1,7 +1,8 @@
 import { 
 	CHANGE_INPUT_VALUE, 
 	ADD_TODO_ITEM, 
-	DELETE_TODO_ITEM
+  DELETE_TODO_ITEM,
+  INIT_LIST_ITEM
 } from './actionTypes';
 
 export const getInputChangeAction = (value) => ({
@@ -16,4 +17,9 @@ export const getAddItemAction = (value) => ({
 export const getDeleteTodoItemAction = (index) => ({
   type:DELETE_TODO_ITEM,
   index
+})
+
+export const initListAction = (data) => ({
+  type:INIT_LIST_ITEM,
+  data
 })
