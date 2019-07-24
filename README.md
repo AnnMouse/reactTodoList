@@ -59,8 +59,11 @@ JSX -> JS 对象 -> 真实的DOM
 - css动画效果，使用@keyframes定义css动画
 @keyframes 样式名称 定义动画效果，使用animation响应动画效果。最后添加forwards，保留最后一帧动画效果。
 - react-transition-group(Css transition使用方法)
-
-
+### redux 
+- Redux = Reducer + Flux 数据层框架，所有的数据都存在store中
+- Redux 工作流程
+1. store 存储所有的公共数据
+2. ![avatar](./redux-flow.png)
 
 
 
