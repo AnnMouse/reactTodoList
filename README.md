@@ -1,4 +1,5 @@
 ### 代码目录简介
+
 - serviceWorker.js 用于WPA，即断网以后用户仍可访问之前缓存的页面
 - manifest.json 用于访问页面中的图标的配置
 - favicon.ico 访问页面路径中的图标
@@ -7,6 +8,7 @@
 - Fragment，占位符，将组件中最外层div隐藏掉
 
 ### react中的响应式设计思想和事件绑定
+
 - react中的immutable概念：性能角度考虑，修改state中数据一般需要先拷贝一份出来，再用setstate复制。
 - 注意jsx中的注释，花括号内注释
 - htmlFor="insertArea"，设置光标聚焦的位置
@@ -17,6 +19,7 @@
 - react函数式编程，维护方便，自动化测试方便。
 
 ### react高级内容
+
 - 使用propTypes对接收的属性做强校验
 - 使用defaultProps在没有传值的情况下，可以使用默认值。默认值的类型必须与propTypes的类型一致
 - 当数据state或者props发生变化时，render函数会被出发一次。当父组件的render函数被运行时，它的子组件的render都将被重新运行。
@@ -37,6 +40,7 @@ JSX -> JS 对象 -> 真实的DOM
 - React中ref的使用，获取元素对应的DOM，e.target是一种，另一种为ref。ref表示直接操作DOM，尽量操作数据触发改变。
 
 ### react生命周期函数
+
 - 指在某一个时刻组件会自动执行的函数
 1. 初始化过程 setup props and state
 2. 挂载过程  componentWillMount -> render -> componentDidMount
@@ -59,7 +63,9 @@ JSX -> JS 对象 -> 真实的DOM
 - css动画效果，使用@keyframes定义css动画
 @keyframes 样式名称 定义动画效果，使用animation响应动画效果。最后添加forwards，保留最后一帧动画效果。
 - react-transition-group(Css transition使用方法)
+
 ### redux 
+
 - Redux = Reducer + Flux 数据层框架，所有的数据都存在store中
 - Redux 工作流程
 1. store 存储所有的公共数据
@@ -75,6 +81,10 @@ JSX -> JS 对象 -> 真实的DOM
 2. store中的数据只有store可以改变，reducer只是复制原store内容处理后返回给store
 3. reducer 必须是纯函数。纯函数：给定固定的输入，就一定会有固定的输出，不会有任何副作用
 4. createStore用于创建一个store，store.dispatch帮助派发action,传递给store。store.getState帮助获取所有store中的数据内容，store.subscribe帮助订阅store的改变，只要store改变，subscribe的灰调函数就会被执行。
+
+### redux进阶
+- ui组件负责渲染，容器组件负责逻辑
+- 无状态组件：表示一个函数，接收一个props，返回一个jsx。当普通组件只有一个render函数时，可用无状态组件进行替换。无状态组件，减少执行生命周期或者其他的方法的时间，性能比较高。
 
 
 
