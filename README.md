@@ -64,7 +64,17 @@ JSX -> JS 对象 -> 真实的DOM
 - Redux 工作流程
 1. store 存储所有的公共数据
 2. ![avatar](./redux-flow.png)
-
+- 创建store
+1. 引用createStore方法，创建store时需要将创建好的reducer传递进去。reducer必须传回函数。
+2. 整个流程
+1).react要改变store中的数据，先派发action。action通过dispatch方法传递给store,store将之前的数据和action传给reducer。reducer经过处理之后返回新的store。
+2).actionTypes用于创建action type常量，减少拼写错误问题
+3).统一使用createaction创建action，避免业务逻辑中出现action
+- 知识点补充
+1. store 是唯一值
+2. store中的数据只有store可以改变，reducer只是复制原store内容处理后返回给store
+3. reducer 必须是纯函数。纯函数：给定固定的输入，就一定会有固定的输出，不会有任何副作用
+4. createStore用于创建一个store，store.dispatch帮助派发action,传递给store。store.getState帮助获取所有store中的数据内容，store.subscribe帮助订阅store的改变，只要store改变，subscribe的灰调函数就会被执行。
 
 
 
