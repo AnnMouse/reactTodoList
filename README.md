@@ -97,7 +97,8 @@ JSX -> JS 对象 -> 真实的DOM
 - 中间件则存在于action与store之间。action通过dispatch传递一个对象给store。如果action传递的是函数，dispatch会将函数先执行一遍，生成的对象结果返回给store。因此，dispatch根据参数不同进行不同的操作，redux-thunk升级了dispatch方法。
 - redux-thunk将异步操作放入了action中操作
 - redux-saga将异步操作单独分离出来放入另一个文件进行管理
-
+1. 在组件生命周期里派发action,因为安装了redux-saga,所以不仅仅是reducer可以接收到,sagas文件中也可以接收到,通过takeEvery声明接收哪个type类型的action,一旦接收到,开始执行第二个参数的方法.
+2. 执行完方法后会生成新的action,通过put方法,将action派发给store,store接收到action后传给reducer,reducer返回新的数据给store。
 
 
 

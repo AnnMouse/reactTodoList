@@ -5,9 +5,12 @@ import {
 	getInputChangeAction,
 	getAddItemAction,
 	getDeleteTodoItemAction,
-	getTodoList,
+	// initListAction,
+	// getTodoList,
+	getInitList
 } from './store/actionCreators';
 import TodoListUI from './TodoListUI';
+// import axios from 'axios';
 
 // 容器组件
 class TodoList extends Component {
@@ -24,10 +27,23 @@ class TodoList extends Component {
 	}
 
 	componentDidMount() {
-		const action = getTodoList();
+		// const action = getTodoList();
 		// dispatch action的时候，action会自动执行
-		store.dispatch(action);
+		// store.dispatch(action);
 		// console.log(action);
+
+		// axios.get('/list.json').then((res)=>{
+		// 	const data = res.data;
+		// 	const action = initListAction(data);
+		// 	store.dispatch(action);
+		// }).catch(()=>{
+		// 	const data = ['dell','lee'];
+		// 	const action = initListAction(data);
+		// 	store.dispatch(action)
+		// })
+
+		const action = getInitList();
+		store.dispatch(action);
 	}
 
 	handleInputChange(e) {
