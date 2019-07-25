@@ -83,6 +83,7 @@ JSX -> JS 对象 -> 真实的DOM
 4. createStore用于创建一个store，store.dispatch帮助派发action,传递给store。store.getState帮助获取所有store中的数据内容，store.subscribe帮助订阅store的改变，只要store改变，subscribe的灰调函数就会被执行。
 
 ### redux进阶
+
 - ui组件负责渲染，容器组件负责逻辑
 - 无状态组件：表示一个函数，接收一个props，返回一个jsx。当普通组件只有一个render函数时，可用无状态组件进行替换。无状态组件，减少执行生命周期或者其他的方法的时间，性能比较高。
 - 用axio获取数据，赋值给初始store
@@ -90,6 +91,15 @@ JSX -> JS 对象 -> 真实的DOM
 1. 安装redux-thunk，
 2. 创建store的时候，配置reducer中的redux-thunk。通过enhancer启用多个中间件。
 3. action 必须是对象，但添加了redux-thunk后，返回的对象可以是一个函数，且可以将函数派发给store。store接收到函数时，自动执行函数。
+
+### redux 中间件
+- 中间件原理：view 派发action，action 通过dispatch方法派发给store，store接收到action连同之前的state一起传给reducer,reducer返回新的数据给store。store改变自己的state,触发组件重新渲染。
+- 中间件则存在于action与store之间。action通过dispatch传递一个对象给store。如果action传递的是函数，dispatch会将函数先执行一遍，生成的对象结果返回给store。因此，dispatch根据参数不同进行不同的操作，redux-thunk升级了dispatch方法。
+- redux-thunk将异步操作放入了action中操作
+- redux-saga将异步操作单独分离出来放入另一个文件进行管理
+
+
+
 
 
 
