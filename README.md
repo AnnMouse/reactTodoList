@@ -100,6 +100,12 @@ JSX -> JS 对象 -> 真实的DOM
 1. 在组件生命周期里派发action,因为安装了redux-saga,所以不仅仅是reducer可以接收到,sagas文件中也可以接收到,通过takeEvery声明接收哪个type类型的action,一旦接收到,开始执行第二个参数的方法.
 2. 执行完方法后会生成新的action,通过put方法,将action派发给store,store接收到action后传给reducer,reducer返回新的数据给store。
 
+### react-redux
+- Provider为提供器,链接了store以后,<Provider>里所有的组件全部都可以访问到store的内容
+- connect方法做链接,需要三个参数,第三个参数为组件,前两者为链接规则.
+- 规则一:mapStateToProps将store与组件关联
+- 规则二:props中如何对store进行修改和store中的dispatch做关联
+
 
 
 
