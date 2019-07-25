@@ -86,6 +86,10 @@ JSX -> JS 对象 -> 真实的DOM
 - ui组件负责渲染，容器组件负责逻辑
 - 无状态组件：表示一个函数，接收一个props，返回一个jsx。当普通组件只有一个render函数时，可用无状态组件进行替换。无状态组件，减少执行生命周期或者其他的方法的时间，性能比较高。
 - 用axio获取数据，赋值给初始store
+- 通过reducer创建store的时候使用中间件redux-thunk
+1. 安装redux-thunk，
+2. 创建store的时候，配置reducer中的redux-thunk。通过enhancer启用多个中间件。
+3. action 必须是对象，但添加了redux-thunk后，返回的对象可以是一个函数，且可以将函数派发给store。store接收到函数时，自动执行函数。
 
 
 

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Input, Button, List } from 'antd'; 
 
 const TodoListUI = (props) => {
@@ -29,7 +29,7 @@ const TodoListUI = (props) => {
         bordered
         dataSource={list}
         renderItem={(item,index) => 
-          <List.Item onClick = {(index) => { handleItemDelete(index) }}>{item}</List.Item>
+          <List.Item onClick = {() => { handleItemDelete(index) }}>{item}</List.Item>
         }
       />
     </div>
